@@ -19,6 +19,7 @@
 #include "Clases/inputUnit.h"
 #include "Clases/outputUnit.h"
 #include "Clases/programMemory.h"
+#include "Clases/lectorFichero.h"
 
 int main(int argc, char* argv[]) {
 	if (argc != 3) {
@@ -31,24 +32,11 @@ int main(int argc, char* argv[]) {
 	std::string output_file = "../CintaSalida/";
 	input_file += argv[1];
 	output_file += argv[2];
-	std::ifstream input_stream(input_file);
-	std::ofstream output_stream(output_file);
 
-	if (!input_stream.is_open()) {
-		std::cerr << "Error: No se pudo abrir el archivo de entrada." << std::endl;
-		return 1;
-	}
-	if (!output_stream.is_open()) {
-		std::cerr << "Error: No se pudo abrir el archivo de salida." << std::endl;
-		return 1;
-	}
-
-	while (!input_stream.eof()) {
-		std::string line;
-		std::getline(input_stream, line);
-		std::cout << line << std::endl;
-		output_stream << line << std::endl;
-	}
+	lectorFichero lector(input_file);
+	programMemory program_memory;
+	program_memory.cargarInstrucciones(lector.leerFichero());
+	//program_memory.mostrarInstrucciones();
 
   return 0;
 }
