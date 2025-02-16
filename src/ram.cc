@@ -22,16 +22,21 @@
 #include "Clases/lectorFichero.h"
 
 int main(int argc, char* argv[]) {
-	if (argc != 3) {
+	if (argc != 4) {
 		std::cerr << "Error: Numero de argumentos incorrecto." << std::endl;
 		std::cerr << "Uso: ./ram  <archivoEntrada> <archivoSalida>" << std::endl;
 		return 1;
 	}
 
-	std::string input_file = "../CintaEntrada/";
-	std::string output_file = "../CintaSalida/";
+	std::string input_file = "../Tests/";
+	std::string output_chain = "../CintaSalida/";
+	std::string input_chain = "../CintaEntrada/";
 	input_file += argv[1];
-	output_file += argv[2];
+	output_chain += argv[2];
+	input_chain += argv[3];
+
+	OutputUnit output_unit(output_chain);
+	InputUnit input_unit(input_chain);
 
 	lectorFichero lector(input_file);
 	programMemory program_memory;

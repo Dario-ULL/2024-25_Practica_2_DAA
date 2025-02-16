@@ -13,11 +13,20 @@
 #ifndef OUTPUTUNIT_H
 #define OUTPUTUNIT_H
 
-class outputUnit {
- private:
-  
- public:
+#include <fstream>
+#include <iostream>
+#include <string>
 
+class OutputUnit {
+ private:
+  std::ofstream outputFile_;
+  std::string fileName_;
+  int cabezal_;
+ public:
+  OutputUnit(const std::string& outputFileName);
+  ~OutputUnit();
+  void write(std::string value);
+  void closeFile();
 };
 
 #endif

@@ -13,11 +13,19 @@
 #ifndef INPUTUNIT_H
 #define INPUTUNIT_H
 
-class inputUnit {
- private:
-  
- public:
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <sstream>
 
+class InputUnit {
+ private:
+  std::ifstream inputFile_;
+  int cabezal_;
+ public:
+  InputUnit(const std::string& inputFileName);
+  ~InputUnit();
+  std::string read();
 };
 
 #endif

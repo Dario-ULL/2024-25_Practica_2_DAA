@@ -23,3 +23,20 @@
 */
 
 #include "../Clases/outputUnit.h"
+
+OutputUnit::OutputUnit(const std::string& outputFileName) {
+  outputFile_.open(outputFileName);
+}
+
+OutputUnit::~OutputUnit() {
+  closeFile();
+}
+
+void OutputUnit::write(std::string value) {
+  outputFile_ << value << " ";
+  cabezal_++;
+}
+
+void OutputUnit::closeFile() {
+  outputFile_.close();
+}
