@@ -13,11 +13,20 @@
 #ifndef DATAMEMORY_H
 #define DATAMEMORY_H
 
+#include <iostream>
+#include <vector>
+
 class dataMemory {
  private:
-  
+  std::vector<int> memoriaDatos_;
  public:
-
+  dataMemory(int tamano);
+  ~dataMemory();
+  void cargarDatos(std::vector<int> datos);
+  int getDato(int direccion);
+  void setDato(int direccion, int dato);
+  int getAcumulador();
+  void mostrarDatos();
 };
 
 #endif

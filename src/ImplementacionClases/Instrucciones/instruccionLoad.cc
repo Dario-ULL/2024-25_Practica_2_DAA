@@ -10,21 +10,10 @@
  *          
 */
 
-#ifndef ALUUNIT_H
-#define ALUUNIT_H
+#include "../../Clases/Instrucciones/instruccionLoad.h"
 
-#include "instruccion.h"
+instruccionLoad::instruccionLoad(std::string etiqueta, std::string operacion, std::string operando) : instruccion(etiqueta, operacion, operando) {}
 
-class instruccion;
 
-class aluUnit {
- private:
-  int acumulador_;
- public:
-  aluUnit();
-  ~aluUnit();
-
-  int ejecutarInstruccion(instruccion* instruccion);
-};
-
-#endif
+void instruccionLoad::ejecutar() {
+}

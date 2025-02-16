@@ -11,3 +11,15 @@
 */
 
 #include "../Clases/aluUnit.h"
+
+aluUnit::aluUnit() {
+  acumulador_ = 0;
+}
+
+aluUnit::~aluUnit() {}
+
+int aluUnit::ejecutarInstruccion(instruccion* instruccion) {
+  instruccion->ejecutar();
+  acumulador_++;
+  return acumulador_;
+}

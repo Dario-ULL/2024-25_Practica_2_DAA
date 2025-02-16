@@ -36,7 +36,8 @@ int main(int argc, char* argv[]) {
 	lectorFichero lector(input_file);
 	programMemory program_memory;
 	program_memory.cargarInstrucciones(lector.leerFichero());
-	//program_memory.mostrarInstrucciones();
-
+	std::cout << "Instrucciones cargadas: " << std::endl;
+	program_memory.mostrarInstrucciones();
+	dataMemory data_memory(10);
   return 0;
 }

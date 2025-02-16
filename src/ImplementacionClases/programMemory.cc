@@ -11,6 +11,7 @@
 */
 
 #include "../Clases/programMemory.h"
+#include "../Clases/Instrucciones/instruccionLoad.h"
 
 programMemory::programMemory() {}
 
@@ -29,31 +30,39 @@ std::string programMemory::detectarEtiqueta(const std::string& linea) {
 
 void programMemory::cargarInstrucciones(std::vector<std::string> instrucciones) {
   for (size_t i = 0; i < instrucciones.size(); i++) {
-    Instruccion instruccion;
     std::stringstream ss(instrucciones[i]);
-    std::string palabra;
+    std::string palabra, etiqueta, operacion, operando;
+
     ss >> palabra;
     if (palabra.back() == ':') {
-      instruccion.etiqueta = palabra;
+      etiqueta = palabra;
       ss >> palabra;
     }
-    instruccion.operacion = palabra;
-    ss >> palabra;
-    if (palabra == instruccion.operacion) {
-      palabra = "";
+    
+    operacion = palabra;
+    ss >> operando;
+    
+    instruccion* instr = nullptr;
+    if (operacion == "LOAD") {
+      instr = new instruccionLoad(etiqueta, operacion, operando);
+    } else {
+      instr = new instruccionLoad(etiqueta, operacion, operando);
     }
-    instruccion.operando = palabra;
-    std::cout << "Intruccion: " << instruccion.etiqueta  << "-" << instruccion.operacion << "-" << instruccion.operando << "-" << std::endl;
-    instrucciones_.push_back(instruccion);
+
+    instr->setEtiqueta(etiqueta);
+    instr->setOperacion(operacion);
+    instr->setOperando(operando);
+
+    instrucciones_.push_back(instr);
   }
 }
 
-Instruccion programMemory::getInstruccion(int direccion) {
+instruccion* programMemory::getInstruccion(int direccion) {
   return instrucciones_[direccion];
 }
 
 void programMemory::mostrarInstrucciones() {
   for (size_t i = 0; i < instrucciones_.size(); i++) {
-    std::cout << " '1" << instrucciones_[i].etiqueta << "' '2" << instrucciones_[i].operacion << "' '3" << instrucciones_[i].operando << "' " << std::endl;
+    std::cout << "Intruccion: " << instrucciones_[i]->getEtiqueta()  << "-" << instrucciones_[i]->getOperacion() << "-" << instrucciones_[i]->getOperando() << "-" << std::endl;
   }
 }

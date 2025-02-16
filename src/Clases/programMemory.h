@@ -18,21 +18,19 @@
 #include <string>
 #include <sstream>
 
-struct Instruccion {
-  std::string etiqueta;
-  std::string operacion;
-  std::string operando;
-};
+#include "instruccion.h"
+
+class instruccion;
 
 class programMemory {
  private:
-  std::vector<Instruccion> instrucciones_;
+  std::vector<instruccion*> instrucciones_;
  public:
   programMemory();
   ~programMemory();
   std::string detectarEtiqueta(const std::string& linea);
   void cargarInstrucciones(std::vector<std::string> instrucciones);
-  Instruccion getInstruccion(int direccion);
+  instruccion* getInstruccion(int direccion);
   void mostrarInstrucciones();
 };
 
