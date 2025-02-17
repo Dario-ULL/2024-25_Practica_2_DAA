@@ -12,8 +12,9 @@
 
 #include "../../Clases/Instrucciones/instruccionLoad.h"
 
-instruccionLoad::instruccionLoad(std::string etiqueta, std::string operacion, std::string operando) : instruccion(etiqueta, operacion, operando) {}
+instruccionLoad::instruccionLoad(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
 
-void instruccionLoad::ejecutar() {
+int instruccionLoad::ejecutar(int contador) {
+  return contador++;
 }

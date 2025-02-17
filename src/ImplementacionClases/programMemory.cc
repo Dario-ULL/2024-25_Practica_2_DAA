@@ -29,31 +29,32 @@ std::string programMemory::detectarEtiqueta(const std::string& linea) {
 }
 
 void programMemory::cargarInstrucciones(std::vector<std::string> instrucciones) {
+  std::unordered_map<std::string, int> etiquetas;
   for (size_t i = 0; i < instrucciones.size(); i++) {
     std::stringstream ss(instrucciones[i]);
-    std::string palabra, etiqueta, operacion, operando;
-
+    std::string palabra, operacion, operando;
     ss >> palabra;
     if (palabra.back() == ':') {
-      etiqueta = palabra;
+      palabra.pop_back();
+      etiquetas[palabra] = i;
       ss >> palabra;
     }
-    
     operacion = palabra;
     ss >> operando;
-    
-    instruccion* instr = nullptr;
+    instruccion* instruccion = nullptr;
     if (operacion == "LOAD") {
-      instr = new instruccionLoad(etiqueta, operacion, operando);
+      instruccion = new instruccionLoad(operacion, operando);
     } else {
-      instr = new instruccionLoad(etiqueta, operacion, operando);
+      instruccion = new instruccionLoad(operacion, operando);
     }
-
-    instr->setEtiqueta(etiqueta);
-    instr->setOperacion(operacion);
-    instr->setOperando(operando);
-
-    instrucciones_.push_back(instr);
+    instruccion->setOperacion(operacion);
+    instruccion->setOperando(operando);
+    instrucciones_.push_back(instruccion);
+  }
+  for (size_t i = 0; i < instrucciones_.size(); i++) {
+    if (instrucciones_[i]->getOperacion() == "JUMP" || instrucciones_[i]->getOperacion() == "JZERO" || instrucciones_[i]->getOperacion() == "JGTZ") {
+      instrucciones_[i]->setOperando(std::to_string(etiquetas[instrucciones_[i]->getOperando()]));
+    }
   }
 }
 
@@ -63,6 +64,6 @@ instruccion* programMemory::getInstruccion(int direccion) {
 
 void programMemory::mostrarInstrucciones() {
   for (size_t i = 0; i < instrucciones_.size(); i++) {
-    std::cout << "Intruccion: " << instrucciones_[i]->getEtiqueta()  << "-" << instrucciones_[i]->getOperacion() << "-" << instrucciones_[i]->getOperando() << "-" << std::endl;
+    std::cout << "Intruccion: " << instrucciones_[i]->getOperacion() << "-" << instrucciones_[i]->getOperando() << "-" << std::endl;
   }
 }

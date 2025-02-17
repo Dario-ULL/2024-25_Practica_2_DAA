@@ -12,6 +12,10 @@
 
 #include "../Clases/inputUnit.h"
 
+InputUnit::InputUnit() {
+  cabezal_ = 0;
+}
+
 InputUnit::InputUnit(const std::string& inputFileName) {
   std::string fileName = inputFileName;
   inputFile_.open(fileName);
@@ -31,7 +35,7 @@ std::string InputUnit::read() {
   std::getline(inputFile_, line); 
   std::stringstream ss(line);
   std::string num;
-  size_t contador = 0;
+  int contador = 0;
   while (contador <= cabezal_ && ss >> num) {
       contador++;
   }

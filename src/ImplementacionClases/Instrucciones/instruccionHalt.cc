@@ -10,21 +10,11 @@
  *          
 */
 
-#ifndef ALUUNIT_H
-#define ALUUNIT_H
+#include "../../Clases/Instrucciones/instruccionHalt.h"
 
-#include "instruccion.h"
+instruccionHalt::instruccionHalt(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
-class instruccion;
 
-class aluUnit {
- private:
-  int contador_;
- public:
-  aluUnit();
-  ~aluUnit();
-
-  int ejecutarInstruccion(instruccion* instruccion);
-};
-
-#endif
+int instruccionHalt::ejecutar(int contador) {
+  return contador++;
+}

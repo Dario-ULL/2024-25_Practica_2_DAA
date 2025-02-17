@@ -47,7 +47,7 @@ std::vector<std::string> lectorFichero::leerFichero() {
   std::vector<std::string> texto;
   while (getline(fichero, linea)) {
     linea = limpiarEspacios(linea);
-    std::transform(linea.begin(), linea.end(), linea.begin(), ::tolower);
+    std::transform(linea.begin(), linea.end(), linea.begin(), ::toupper);
     if (linea[0] != '#' && !linea.empty() && linea.size() > 2) {
       texto.push_back(linea);
     }

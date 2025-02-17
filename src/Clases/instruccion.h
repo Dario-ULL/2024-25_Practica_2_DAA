@@ -24,20 +24,17 @@ class dataMemory;
 
 class instruccion {
  private:
-  std::string etiqueta_;
   std::string operacion_;
   std::string operando_;
  public:
   instruccion();
-  instruccion(std::string etiqueta, std::string operacion, std::string operando);
+  instruccion(std::string operacion, std::string operando);
   virtual ~instruccion() = default;
-  std::string getEtiqueta();
   std::string getOperacion();
   std::string getOperando();
-  void setEtiqueta(std::string etiqueta);
   void setOperacion(std::string operacion);
   void setOperando(std::string operando);
-  virtual void ejecutar() = 0;
+  virtual int ejecutar(int contador) = 0;
 };
 
 #endif

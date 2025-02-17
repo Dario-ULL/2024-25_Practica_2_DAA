@@ -10,21 +10,11 @@
  *          
 */
 
-#ifndef ALUUNIT_H
-#define ALUUNIT_H
+#include "../../Clases/Instrucciones/instruccionJump.h"
 
-#include "instruccion.h"
+instruccionJump::instruccionJump(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
-class instruccion;
 
-class aluUnit {
- private:
-  int contador_;
- public:
-  aluUnit();
-  ~aluUnit();
-
-  int ejecutarInstruccion(instruccion* instruccion);
-};
-
-#endif
+int instruccionJump::ejecutar(int contador) {
+  return contador++;
+}

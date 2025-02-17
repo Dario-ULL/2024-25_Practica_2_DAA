@@ -20,8 +20,8 @@ class dataMemory;
 
 class instruccionLoad : public instruccion {
  public:
-  instruccionLoad(std::string etiqueta, std::string operacion, std::string operando);
-  void ejecutar();
+  instruccionLoad(std::string operacion, std::string operando);
+  int ejecutar(int contador) override;
 };
 
 #endif

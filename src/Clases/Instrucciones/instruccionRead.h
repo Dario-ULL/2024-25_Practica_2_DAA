@@ -10,21 +10,19 @@
  *          
 */
 
-#ifndef ALUUNIT_H
-#define ALUUNIT_H
+#ifndef INSTRUCCION_READ_H
+#define INSTRUCCION_READ_H
 
-#include "instruccion.h"
+#include "../instruccion.h"  // Incluimos primero la definición completa de Instruccion
 
-class instruccion;
+class programMemory;
+class dataMemory;
 
-class aluUnit {
- private:
-  int contador_;
+class instruccionRead : public instruccion {
  public:
-  aluUnit();
-  ~aluUnit();
-
-  int ejecutarInstruccion(instruccion* instruccion);
+  instruccionRead(std::string operacion, std::string operando);
+  int ejecutar(int contador) override;
 };
 
 #endif
+

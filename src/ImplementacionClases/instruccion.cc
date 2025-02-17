@@ -13,19 +13,13 @@
 #include "../Clases/instruccion.h"
 
 instruccion::instruccion() {
-  etiqueta_ = "";
   operacion_ = "";
   operando_ = "";
 }
 
-instruccion::instruccion(std::string etiqueta, std::string operacion, std::string operando) {
-  etiqueta_ = etiqueta;
+instruccion::instruccion(std::string operacion, std::string operando) {
   operacion_ = operacion;
   operando_ = operando;
-}
-
-std::string instruccion::getEtiqueta() {
-  return etiqueta_;
 }
 
 std::string instruccion::getOperacion() {
@@ -34,10 +28,6 @@ std::string instruccion::getOperacion() {
 
 std::string instruccion::getOperando() {
   return operando_;
-}
-
-void instruccion::setEtiqueta(std::string etiqueta) {
-  etiqueta_ = etiqueta;
 }
 
 void instruccion::setOperacion(std::string operacion) {

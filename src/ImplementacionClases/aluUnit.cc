@@ -13,13 +13,12 @@
 #include "../Clases/aluUnit.h"
 
 aluUnit::aluUnit() {
-  acumulador_ = 0;
+  contador_ = 0;
 }
 
 aluUnit::~aluUnit() {}
 
 int aluUnit::ejecutarInstruccion(instruccion* instruccion) {
-  instruccion->ejecutar();
-  acumulador_++;
-  return acumulador_;
+  instruccion->ejecutar(contador_);
+  return contador_;
 }

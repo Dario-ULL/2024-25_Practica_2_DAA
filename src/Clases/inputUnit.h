@@ -23,6 +23,7 @@ class InputUnit {
   std::ifstream inputFile_;
   int cabezal_;
  public:
+  InputUnit();
   InputUnit(const std::string& inputFileName);
   ~InputUnit();
   std::string read();

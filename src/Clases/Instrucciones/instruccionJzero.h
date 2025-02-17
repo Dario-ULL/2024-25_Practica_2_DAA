@@ -10,21 +10,19 @@
  *          
 */
 
-#ifndef ALUUNIT_H
-#define ALUUNIT_H
+#ifndef INSTRUCCION_JZERO_H
+#define INSTRUCCION_JZERO_H
 
-#include "instruccion.h"
+#include "../instruccion.h"  // Incluimos primero la definición completa de Instruccion
 
-class instruccion;
+class programMemory;
+class dataMemory;
 
-class aluUnit {
- private:
-  int contador_;
+class instruccionJzero : public instruccion {
  public:
-  aluUnit();
-  ~aluUnit();
-
-  int ejecutarInstruccion(instruccion* instruccion);
+  instruccionJzero(std::string operacion, std::string operando);
+  int ejecutar(int contador) override;
 };
 
 #endif
+
