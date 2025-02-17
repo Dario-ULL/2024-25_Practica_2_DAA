@@ -37,7 +37,6 @@ int main(int argc, char* argv[]) {
 
 	OutputUnit outputUnit(output_chain);
 	InputUnit inputUnit(input_chain);
-
 	lectorFichero lector(input_file);
 	programMemory memoriaPrograma;
 	try {
@@ -49,7 +48,12 @@ int main(int argc, char* argv[]) {
 	dataMemory memoriaDatos(5);
 
 	aluUnit alu;
-	alu.ejecutarInstrucciones(&memoriaPrograma, &memoriaDatos, &inputUnit, &outputUnit);
-	std::cout << "Programa finalizado." << std::endl;
+	try {
+		alu.ejecutarInstrucciones(&memoriaPrograma, &memoriaDatos, &inputUnit, &outputUnit);
+		std::cout << "Programa ejecutado con exito." << std::endl;
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
   return 0;
 }

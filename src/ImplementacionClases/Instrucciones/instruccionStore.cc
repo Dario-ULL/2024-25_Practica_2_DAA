@@ -14,7 +14,19 @@
 
 instruccionStore::instruccionStore(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
-
+/**
+ * Realiza una operación de almacenamiento, guardando el valor de la posición 0 
+ * de la memoria de datos en la dirección especificada por el operando. Si el operando
+ * no es válido o si se intenta almacenar en un operando inmediato, lanza una excepción.
+ * 
+ * Parámetros:
+ *   contador: Contador de operaciones, se incrementa y se devuelve.
+ *   memoriaDatos: Memoria de datos para obtener y almacenar los valores.
+ *   inputUnit, outputUnit: Unidades de entrada y salida (no usadas).
+ * 
+ * Retorna:
+ *   El contador incrementado.
+ */
 int instruccionStore::ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) {
   std::string operando = getOperando();
   int direccion = 0;

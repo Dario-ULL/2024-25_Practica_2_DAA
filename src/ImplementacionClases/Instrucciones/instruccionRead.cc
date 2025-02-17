@@ -14,7 +14,18 @@
 
 instruccionRead::instruccionRead(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
-
+/**
+ * Realiza una operación de lectura de un valor y lo guarda en la dirección especificada.
+ * Si el operando no es válido, lanza una excepción.
+ * 
+ * Parámetros:
+ *   contador: Contador de operaciones, se incrementa y se devuelve.
+ *   memoriaDatos: Memoria de datos para obtener y actualizar los valores.
+ *   inputUnit, outputUnit: Unidades de entrada y salida para leer y escribir.
+ * 
+ * Retorna:
+ *   El contador incrementado.
+ */
 int instruccionRead::ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) {
   std::string operando = getOperando();
   try {

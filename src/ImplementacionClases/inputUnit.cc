@@ -30,6 +30,17 @@ InputUnit::~InputUnit() {
   inputFile_.close();
 }
 
+/**
+ * Lee un valor desde el archivo de entrada, avanzando hasta el "cabezal" especificado.
+ * Si se alcanza el final de la línea antes de llegar al cabezal, lanza una excepción.
+ * 
+ * Retorna:
+ *   El valor entero leído desde el archivo de entrada.
+ * 
+ * Excepciones:
+ *   Lanza una excepción std::invalid_argument si se alcanza el fin de la línea antes
+ *   de leer el número esperado.
+ */
 int InputUnit::leer() {
   std::string line;
   std::getline(inputFile_, line); 

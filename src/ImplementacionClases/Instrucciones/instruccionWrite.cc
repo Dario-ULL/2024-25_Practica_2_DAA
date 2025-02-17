@@ -14,7 +14,18 @@
 
 instruccionWrite::instruccionWrite(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
-
+/**
+ * Realiza una operación de escritura en la salida estándar, mostrando el valor
+ * especificado por el operando. Si el operando no es válido, lanza una excepción.
+ * 
+ * Parámetros:
+ *   contador: Contador de operaciones, se incrementa y se devuelve.
+ *   memoriaDatos: Memoria de datos (no se utiliza en esta función).
+ *   inputUnit, outputUnit: Unidades de entrada y salida para escribir.
+ * 
+ * Retorna:
+ *   El contador incrementado.
+ */
 int instruccionWrite::ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) {
   std::string operando = getOperando();
   try {

@@ -22,22 +22,56 @@ instruccion::instruccion(std::string operacion, std::string operando) {
   operando_ = operando;
 }
 
+/**
+ * Obtiene la operación asociada a la instrucción.
+ * 
+ * Retorna:
+ *   Un string que representa la operación de la instrucción.
+ */
 std::string instruccion::getOperacion() {
   return operacion_;
 }
 
+/**
+ * Obtiene el operando asociado a la instrucción.
+ * 
+ * Retorna:
+ *   Un string que representa el operando de la instrucción.
+ */
 std::string instruccion::getOperando() {
   return operando_;
 }
 
+/**
+ * Establece la operación de la instrucción.
+ * 
+ * Parámetro:
+ *   operacion: La operación que se asignará a la instrucción.
+ */
 void instruccion::setOperacion(std::string operacion) {
   operacion_ = operacion;
 }
 
+/**
+ * Establece el operando de la instrucción.
+ * 
+ * Parámetro:
+ *   operando: El operando que se asignará a la instrucción.
+ */
 void instruccion::setOperando(std::string operando) {
   operando_ = operando;
 }
 
+/**
+ * Determina si una cadena de caracteres es un número válido.
+ * 
+ * Parámetro:
+ *   numero: La cadena de caracteres a evaluar.
+ * 
+ * Retorna:
+ *   true si la cadena representa un número válido (puede ser negativo o positivo),
+ *   de lo contrario retorna false.
+ */
 bool instruccion::esNumero(const std::string& numero) {
   if (numero.empty()) return false;
   for (size_t i = 0; i < numero.length(); ++i) {

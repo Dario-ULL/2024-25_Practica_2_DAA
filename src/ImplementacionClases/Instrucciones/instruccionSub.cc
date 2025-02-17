@@ -14,7 +14,19 @@
 
 instruccionSub::instruccionSub(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
-
+/**
+ * Realiza una operación de resta usando el operando especificado y actualiza
+ * el valor en la posición 0 de la memoria de datos. Si el operando no es válido,
+ * lanza una excepción.
+ * 
+ * Parámetros:
+ *   contador: Contador de operaciones, se incrementa y se devuelve.
+ *   memoriaDatos: Memoria de datos para obtener y actualizar los valores.
+ *   inputUnit, outputUnit: Unidades de entrada y salida (no usadas).
+ * 
+ * Retorna:
+ *   El contador incrementado.
+ */
 int instruccionSub::ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) {
   std::string operando = getOperando();
   int acumulador = memoriaDatos->getDato(0);

@@ -21,6 +21,17 @@ lectorFichero::~lectorFichero() {
   fichero.close();
 }
 
+/**
+ * Limpia los espacios redundantes de una línea de texto.
+ * Elimina espacios extra, incluyendo espacios al principio y al final de la línea, 
+ * y reemplaza los múltiples espacios consecutivos por un solo espacio.
+ * 
+ * Parámetro:
+ *   linea: La línea de texto a limpiar.
+ * 
+ * Retorna:
+ *   La línea de texto sin espacios redundantes.
+ */
 std::string lectorFichero::limpiarEspacios(const std::string& linea) {
   std::string linea_limpia;
   bool espacioPrevio = false;
@@ -41,7 +52,13 @@ std::string lectorFichero::limpiarEspacios(const std::string& linea) {
   return linea_limpia;
 }
 
-
+/**
+ * Lee el contenido de un archivo línea por línea, limpiando espacios y transformando
+ * las líneas a mayúsculas. Filtra las líneas vacías y las que comienzan con '#'.
+ * 
+ * Retorna:
+ *   Un vector de strings con las líneas del archivo procesadas.
+ */
 std::vector<std::string> lectorFichero::leerFichero() {
   std::string linea;
   std::vector<std::string> texto;
@@ -55,6 +72,9 @@ std::vector<std::string> lectorFichero::leerFichero() {
   return texto;
 }
 
+/**
+ * Cierra el archivo abierto en el objeto lectorFichero.
+ */
 void lectorFichero::cerrarFichero() {
   fichero.close();
 }
