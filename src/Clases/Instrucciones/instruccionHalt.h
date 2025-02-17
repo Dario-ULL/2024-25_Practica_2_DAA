@@ -21,7 +21,7 @@ class dataMemory;
 class instruccionHalt : public instruccion {
  public:
   instruccionHalt(std::string operacion, std::string operando);
-  int ejecutar(int contador) override;
+  int ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) override;
 };
 
 #endif

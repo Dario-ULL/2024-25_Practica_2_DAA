@@ -15,6 +15,6 @@
 instruccionHalt::instruccionHalt(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
 
-int instruccionHalt::ejecutar(int contador) {
-  return contador++;
+int instruccionHalt::ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) {
+  return -1;
 }

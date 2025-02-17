@@ -25,7 +25,7 @@ class OutputUnit {
  public:
   OutputUnit(const std::string& outputFileName);
   ~OutputUnit();
-  void write(std::string value);
+  void escribir(std::string value);
   void closeFile();
 };
 

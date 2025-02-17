@@ -26,7 +26,7 @@ class InputUnit {
   InputUnit();
   InputUnit(const std::string& inputFileName);
   ~InputUnit();
-  std::string read();
+  int leer();
 };
 
 #endif

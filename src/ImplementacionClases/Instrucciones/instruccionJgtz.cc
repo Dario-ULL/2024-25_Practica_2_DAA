@@ -15,6 +15,11 @@
 instruccionJgtz::instruccionJgtz(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
 
-int instruccionJgtz::ejecutar(int contador) {
-  return contador++;
+int instruccionJgtz::ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) {
+  int direccion = stoi(getOperando());
+  int valor = memoriaDatos->getDato(0);
+  if (valor > 0) {
+    return direccion;
+  }
+  return ++contador;
 }

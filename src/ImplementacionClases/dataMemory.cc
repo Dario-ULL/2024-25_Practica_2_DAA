@@ -38,6 +38,6 @@ int dataMemory::getAcumulador() {
 
 void dataMemory::mostrarDatos() {
   for (size_t i = 0; i < memoriaDatos_.size(); i++) {
-    std::cout << "Dato: " << memoriaDatos_[i] << std::endl;
+    std::cout << "Registro " << i << ": " << memoriaDatos_[i] << std::endl;
   }
 }

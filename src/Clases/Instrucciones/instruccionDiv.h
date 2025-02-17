@@ -20,8 +20,8 @@ class dataMemory;
 
 class instruccionDiv : public instruccion {
  public:
- instruccionDiv(std::string operacion, std::string operando);
-  int ejecutar(int contador) override;
+  instruccionDiv(std::string operacion, std::string operando);
+  int ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) override;
 };
 
 #endif

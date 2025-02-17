@@ -14,6 +14,10 @@
 #define ALUUNIT_H
 
 #include "instruccion.h"
+#include "dataMemory.h"
+#include "programMemory.h"
+#include "inputUnit.h"
+#include "outputUnit.h"
 
 class instruccion;
 
@@ -24,7 +28,7 @@ class aluUnit {
   aluUnit();
   ~aluUnit();
 
-  int ejecutarInstruccion(instruccion* instruccion);
+  int ejecutarInstrucciones(programMemory* memoriaPrograma, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit);
 };
 
 #endif

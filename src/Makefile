@@ -15,7 +15,18 @@ OBJ_FILES = $(OBJ_DIR)/aluUnit.o \
             $(OBJ_DIR)/lectorFichero.o \
             $(OBJ_DIR)/outputUnit.o \
             $(OBJ_DIR)/instruccion.o \
-            $(OBJ_DIR)/Instrucciones/instruccionLoad.o
+            $(OBJ_DIR)/Instrucciones/instruccionLoad.o \
+            $(OBJ_DIR)/Instrucciones/instruccionStore.o \
+            $(OBJ_DIR)/Instrucciones/instruccionAdd.o \
+            $(OBJ_DIR)/Instrucciones/instruccionSub.o \
+            $(OBJ_DIR)/Instrucciones/instruccionMul.o \
+            $(OBJ_DIR)/Instrucciones/instruccionDiv.o	\
+            $(OBJ_DIR)/Instrucciones/instruccionJump.o \
+            $(OBJ_DIR)/Instrucciones/instruccionJzero.o \
+            $(OBJ_DIR)/Instrucciones/instruccionJgtz.o \
+            $(OBJ_DIR)/Instrucciones/instruccionRead.o \
+            $(OBJ_DIR)/Instrucciones/instruccionWrite.o \
+            $(OBJ_DIR)/Instrucciones/instruccionHalt.o
 
 # Regla por defecto
 all: $(EXEC)

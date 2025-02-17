@@ -10,29 +10,32 @@
  *          
 */
 
-#include "../../Clases/Instrucciones/instruccionAdd.h"
+#include "../../Clases/Instrucciones/instruccionDiv.h"
 
-instruccionAdd::instruccionAdd(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
+instruccionDiv::instruccionDiv(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
 
-int instruccionAdd::ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) {
+int instruccionDiv::ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) {
   std::string operando = getOperando();
   int acumulador = memoriaDatos->getDato(0);
-  int valorASumar = 0;
+  int divisor = 0;
   try {
     if (operando[0] == '=') {
-      valorASumar = std::stoi(operando.substr(1));
+      divisor = std::stoi(operando.substr(1));
     } else if (operando[0] == '*') {
       int direccion = std::stoi(operando.substr(1));
-      valorASumar = memoriaDatos->getDato(memoriaDatos->getDato(direccion));
+      divisor = memoriaDatos->getDato(memoriaDatos->getDato(direccion));
     } else if (esNumero(operando)) {
-      valorASumar = memoriaDatos->getDato(std::stoi(operando));
+      divisor = memoriaDatos->getDato(std::stoi(operando));
     } else {
       throw std::invalid_argument("Error: Operando no válido");
     }
-    memoriaDatos->setDato(0, acumulador + valorASumar);
+    if (divisor == 0) {
+      throw std::runtime_error("Error: División por cero");
+    }
+    memoriaDatos->setDato(0, acumulador / divisor);
   } catch (const std::exception& e) {
-    throw std::invalid_argument(std::string("Error en ADD: ") + e.what());
+    throw std::invalid_argument(std::string("Error en DIV: ") + e.what());
   }
   return ++contador;
 }

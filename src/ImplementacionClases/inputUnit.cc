@@ -30,24 +30,20 @@ InputUnit::~InputUnit() {
   inputFile_.close();
 }
 
-std::string InputUnit::read() {
+int InputUnit::leer() {
   std::string line;
   std::getline(inputFile_, line); 
   std::stringstream ss(line);
   std::string num;
   int contador = 0;
   while (contador <= cabezal_ && ss >> num) {
-      contador++;
+    contador++;
   }
-
   if (contador <= cabezal_) {
-      std::cerr << "Error: Fin de la línea alcanzado.\n";
-      return "";
+    throw std::invalid_argument("Error: Fin de la línea alcanzado.\n");
   }
-
   cabezal_++;
   inputFile_.clear();
   inputFile_.seekg(0, std::ios::beg);
-
-  return num;
+  return stoi(num);
 }

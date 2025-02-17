@@ -1,0 +1,8 @@
+read 1
+read 2
+load 1
+sub 2
+jzero salida
+write 1
+salida: write =99
+halt

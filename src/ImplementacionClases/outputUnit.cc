@@ -32,7 +32,7 @@ OutputUnit::~OutputUnit() {
   closeFile();
 }
 
-void OutputUnit::write(std::string value) {
+void OutputUnit::escribir(std::string value) {
   outputFile_ << value << " ";
   cabezal_++;
 }

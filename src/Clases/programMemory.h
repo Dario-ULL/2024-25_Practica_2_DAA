@@ -18,6 +18,7 @@
 #include <string>
 #include <sstream>
 #include <unordered_map>
+#include <functional> 
 
 #include "instruccion.h"
 
@@ -29,10 +30,10 @@ class programMemory {
  public:
   programMemory();
   ~programMemory();
-  std::string detectarEtiqueta(const std::string& linea);
   void cargarInstrucciones(std::vector<std::string> instrucciones);
   instruccion* getInstruccion(int direccion);
   void mostrarInstrucciones();
+  int getTamano();
 };
 
 #endif

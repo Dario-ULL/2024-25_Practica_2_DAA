@@ -35,14 +35,21 @@ int main(int argc, char* argv[]) {
 	output_chain += argv[2];
 	input_chain += argv[3];
 
-	OutputUnit output_unit(output_chain);
-	InputUnit input_unit(input_chain);
+	OutputUnit outputUnit(output_chain);
+	InputUnit inputUnit(input_chain);
 
 	lectorFichero lector(input_file);
-	programMemory program_memory;
-	program_memory.cargarInstrucciones(lector.leerFichero());
-	std::cout << "Instrucciones cargadas: " << std::endl;
-	program_memory.mostrarInstrucciones();
-	dataMemory data_memory(10);
+	programMemory memoriaPrograma;
+	try {
+		memoriaPrograma.cargarInstrucciones(lector.leerFichero());
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
+	dataMemory memoriaDatos(5);
+
+	aluUnit alu;
+	alu.ejecutarInstrucciones(&memoriaPrograma, &memoriaDatos, &inputUnit, &outputUnit);
+	std::cout << "Programa finalizado." << std::endl;
   return 0;
 }

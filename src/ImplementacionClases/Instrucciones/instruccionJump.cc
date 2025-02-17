@@ -15,6 +15,7 @@
 instruccionJump::instruccionJump(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
 
-int instruccionJump::ejecutar(int contador) {
-  return contador++;
+int instruccionJump::ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) {
+  int direccion = stoi(getOperando());
+  return direccion;
 }

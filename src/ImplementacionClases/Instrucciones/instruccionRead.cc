@@ -15,6 +15,29 @@
 instruccionRead::instruccionRead(std::string operacion, std::string operando) : instruccion(operacion, operando) {}
 
 
-int instruccionRead::ejecutar(int contador) {
-  return contador++;
+int instruccionRead::ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) {
+  std::string operando = getOperando();
+  try {
+    if (operando[0] == '=') {
+      throw std::invalid_argument("Error: No se puede leer en una dirección de memoria constante");
+    } else if (operando[0] == '*') {
+      int direccion = std::stoi(operando.substr(1));
+      int segundaDireccion = memoriaDatos->getDato(direccion);
+      if (segundaDireccion == 0) {
+        throw std::invalid_argument("Error: Dirección no válida, no se puede leer en la dirección 0");
+      }
+      memoriaDatos->setDato(segundaDireccion, inputUnit->leer());
+    } else if (esNumero(operando)) {
+      int direccion = std::stoi(operando);
+      if (direccion == 0) {
+        throw std::invalid_argument("Error: Dirección no válida, no se puede leer en la dirección 0");
+      }
+      memoriaDatos->setDato(direccion, inputUnit->leer());
+    } else {
+      throw std::invalid_argument("Error: Operando no válido");
+    }
+  } catch (const std::exception& e) {
+    throw std::invalid_argument(std::string("Error en READ: ") + e.what());
+  }
+  return ++contador;
 }

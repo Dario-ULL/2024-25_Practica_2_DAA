@@ -37,3 +37,16 @@ void instruccion::setOperacion(std::string operacion) {
 void instruccion::setOperando(std::string operando) {
   operando_ = operando;
 }
+
+bool instruccion::esNumero(const std::string& numero) {
+  if (numero.empty()) return false;
+  for (size_t i = 0; i < numero.length(); ++i) {
+    if (i == 0 && (numero[i] == '-' || numero[i] == '+')) {
+      continue;
+    }
+    if (!isdigit(numero[i])) {
+      return false;
+    }
+  }
+  return true;
+}

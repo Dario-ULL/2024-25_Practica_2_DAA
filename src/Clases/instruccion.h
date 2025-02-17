@@ -18,9 +18,13 @@
 
 #include "programMemory.h"
 #include "dataMemory.h"
+#include "inputUnit.h"
+#include "outputUnit.h"
 
 class programMemory;
 class dataMemory;
+class InputUnit;
+class OutputUnit;
 
 class instruccion {
  private:
@@ -34,7 +38,8 @@ class instruccion {
   std::string getOperando();
   void setOperacion(std::string operacion);
   void setOperando(std::string operando);
-  virtual int ejecutar(int contador) = 0;
+  bool esNumero(const std::string& numero);
+  virtual int ejecutar(int contador, dataMemory* memoriaDatos, InputUnit* inputUnit, OutputUnit* outputUnit) = 0;
 };
 
 #endif
