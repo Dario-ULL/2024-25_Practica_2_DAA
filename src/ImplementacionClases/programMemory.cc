@@ -23,6 +23,7 @@
 #include "../Clases/Instrucciones/instruccionJzero.h"
 #include "../Clases/Instrucciones/instruccionJgtz.h"
 #include "../Clases/Instrucciones/instruccionHalt.h"
+#include "../Clases/Instrucciones/instruccionMod.h"
 
 programMemory::programMemory() {}
 
@@ -52,7 +53,8 @@ void programMemory::cargarInstrucciones(std::vector<std::string> instrucciones) 
     {"JUMP",  [](std::string op, std::string arg) { return new instruccionJump(op, arg); }},
     {"JZERO", [](std::string op, std::string arg) { return new instruccionJzero(op, arg); }},
     {"JGTZ",  [](std::string op, std::string arg) { return new instruccionJgtz(op, arg); }},
-    {"HALT",  [](std::string op, std::string arg) { return new instruccionHalt(op, arg); }}
+    {"HALT",  [](std::string op, std::string arg) { return new instruccionHalt(op, arg); }},
+    {"MOD",   [](std::string op, std::string arg) { return new instruccionMod(op, arg); }}
   };
   for (size_t i = 0; i < instrucciones.size(); i++) {
     std::stringstream ss(instrucciones[i]);

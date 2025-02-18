@@ -26,7 +26,8 @@ OBJ_FILES = $(OBJ_DIR)/aluUnit.o \
             $(OBJ_DIR)/Instrucciones/instruccionJgtz.o \
             $(OBJ_DIR)/Instrucciones/instruccionRead.o \
             $(OBJ_DIR)/Instrucciones/instruccionWrite.o \
-            $(OBJ_DIR)/Instrucciones/instruccionHalt.o
+            $(OBJ_DIR)/Instrucciones/instruccionHalt.o \
+            $(OBJ_DIR)/Instrucciones/instruccionMod.o
 
 # Regla por defecto
 all: $(EXEC)

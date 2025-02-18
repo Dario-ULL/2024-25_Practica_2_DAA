@@ -38,7 +38,7 @@ int aluUnit::ejecutarInstrucciones(programMemory* memoriaPrograma, dataMemory* m
     try {
       contador_ = instruccion->ejecutar(contador_, memoriaDatos, inputUnit, outputUnit);
     } catch (std::invalid_argument& e) {
-      throw std::invalid_argument(e.what());
+      throw std::invalid_argument(e.what() + std::string(" en la linea ") + std::to_string(contador_));
     }
   }
   return contador_;
